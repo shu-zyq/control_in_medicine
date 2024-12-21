@@ -8,10 +8,10 @@ Ubuntu18.04 + ROS melodic 或者 Ubuntu20.04 + ROS neotic<br>
 建议使用Ubuntu20.04，如果是Ubuntu18.04则需要用conda创建python3以上版本的虚拟环境，因为在程序中使用到了深度学习的程序需要在python3中运行，而18.04终端的python版本是2.7
 ## 所需安装的库
 moveit、ompl、cuda、pytorch等<br>
-其中moveit和Ompl安装源代码或者二进制形式的都行，二进制的安装方式更简单
+其中moveit和ompl安装源代码或者二进制形式的都行，二进制的安装方式更简单
 ## 程序运行前
-1.将我放入目录中的几个包都放入工作空间的src目录中<br>
-2.程序中一些地方的路径需要根据自己的放置路径来改，注意在程序中的sys.path.append()函数中也要修改<br>
+1.将我放在github目录中的几个包都放入工作空间的src目录中<br>
+2.程序中一些地方的路径需要根据自己的放置路径来改，注意在程序中的sys.path.append()函数中的路径也要同步修改<br>
 3.用catkin_make编译工作空间，如果是用catkin build，可能会报错<br>
 4.编译无报错，并确保将要运行的python文件的权限是可执行的，开始运行程序<br>
 ## 程序运行
