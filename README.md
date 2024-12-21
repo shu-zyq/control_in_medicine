@@ -85,6 +85,54 @@ sudo rm /var/cache/apt/archives/lock
 sudo rm /var/lib/dpkg/lock
 我的解决办法：重启，有效
 ```
-### OMPL和Moveit的安装
+### OMPL和MoveIt的安装
 如果是二进制安装，方法十分简单，网上可查
 
+### NVIDIA、CUDA、CUDNN的安装
+```
+1.添加源
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+2.检查可安装的驱动
+ubuntu-drivers devices
+3.找到最适合的驱动安装，安装recommended标记的，通常也是数字版本最大的那个
+sudo apt install nvidia-driver-XXX
+# 也可以自动安装系统推荐那个
+sudo ubuntu-drivers autoinstall
+# 如果没有遇到报错，说明安装成功，此时调用nvidia-smi指令可能还是看不到显卡信息，sudo reboot重启系统后能看到
+4.找到nvidia驱动版本对应的CUDA版本：
+https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
+nvidia驱动版本：nvidia-smi中的Driver Version可见，我是560.35.03
+然后在 https://developer.nvidia.com/cuda-toolkit-archive 中选择符合自己版本的cuda进行安装
+Install Type 选择 runfile 最方便，两行命令行：
+wget https://developer.download.nvidia.com/compute/cuda/12.6.3/local_installers/cuda_12.6.3_560.35.05_linux.run
+sudo sh cuda_12.6.3_560.35.05_linux.run
+5.进行安装
+Continue继续
+accept 回车
+回车取消选择驱动，Install安装
+出现summary时安装完成
+6.在.bashrc里配置环境变量：sudo gedit ~/.bashrc
+添加以下3行：
+export PATH=$PATH:/usr/local/cuda/bin  
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64  
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda/lib64
+刷新环境变量：source ~/.bashrc
+7.查看CUDA安装情况：nvcc -V
+8.去官网下载cudnn：https://developer.nvidia.com/rdp/cudnn-download
+选择Local Installer for Linux x86_64 (Tar)下载
+9.下载后解压进入该目录拷贝相关文件
+第一步更建议直接去网上下，快一些
+wget https://developer.download.nvidia.com/compute/cudnn/9.5.1/local_installers/cudnn-local-repo-ubuntu2004-9.5.1_1.0-1_amd64.deb
+sudo dpkg -i cudnn-local-repo-ubuntu2004-9.5.1_1.0-1_amd64.deb
+sudo cp /var/cudnn-local-repo-ubuntu2004-9.5.1/cudnn-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cudnn-cuda-12
+10.查看安装版本
+cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
+11.监控GPU状态
+watch -n 1 nvidia-smi
+NVDIA版本：560.35.03
+CUDA版本：12.6
+cuDNN版本：9.5.1
+```
