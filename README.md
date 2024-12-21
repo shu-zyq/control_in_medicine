@@ -4,7 +4,7 @@
 Ubuntu18.04 + ROS melodic 或者 Ubuntu20.04 + ROS neotic<br>
 建议使用Ubuntu20.04，如果是Ubuntu18.04则需要用conda创建python3以上版本的虚拟环境，因为在程序中使用到了深度学习的程序需要在python3中运行，而18.04终端的python版本是2.7
 ## 所需安装的库
-moveit、ompl、cuda、pytorch等
+moveit、ompl、cuda、pytorch等<br>
 其中moveit和Ompl安装源代码或者二进制形式的都行，二进制的安装方式更简单
 ## 程序运行前
 1.将我放入目录中的几个包都放入工作空间的src目录中<br>
