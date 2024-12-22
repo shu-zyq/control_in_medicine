@@ -5,7 +5,7 @@
 因此本论文主要针对安全性，侧重于复杂环境，在RRT\*算法的基础上做出了改进，并提出了安全性的量化指标。<br>
 本程序是基于ROS环境的高维机械臂路径规划算法。实验数据表明，本文所提出的基于RRT\*改进的路径规划算法在复杂环境中，在安全性和效率上均有较大的提升。
 ## 运行环境
-Ubuntu18.04 + ROS melodic 或者 Ubuntu20.04 + ROS neotic<br>
+Ubuntu18.04 + ROS melodic 或者 Ubuntu20.04 + ROS noetic<br>
 建议使用Ubuntu20.04，如果是Ubuntu18.04则需要用conda创建python3以上版本的虚拟环境，因为在程序中使用到了深度学习的程序需要在python3中运行，而18.04终端的python版本是2.7
 ## 所需安装的库
 moveit、ompl、cuda、pytorch等<br>
@@ -60,7 +60,7 @@ rosrun rrt_zyq demo7.py
 内存交换分区	10GB	主分区	空间起始位置	交换空间<br>
 /根挂载点分区	剩下的全给	主分区	空间起始位置	Ext4日志文件系统<br>
 安装启动引导器的设备	/dev/...(分区对应的编号)	efi	500MB
-### ROS neotic安装
+### ROS noetic安装
 ```
 1.配置公钥
 sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
@@ -70,7 +70,7 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main
 sudo sh -c '. /etc/lsb-release && echo "deb http://mirrors.ustc.edu.cn/ros/ubuntu/ $DISTRIB_CODENAME main" > /etc/apt/sources.list.d/ros-latest.list'
 3.更新软件源
 sudo apt update
-4.安装ROS-neotic
+4.安装ROS-noetic
 sudo apt install ros-noetic-desktop-full
 5.激活环境变量
 source /opt/ros/noetic/setup.bash
