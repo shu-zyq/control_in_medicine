@@ -53,7 +53,7 @@ rosrun rrt_zyq demo7.py
 3.重启电脑，F2进入BIOS，在boot maneger里关闭secure boot，并将第一启动选择从Windows改为USB<br>
 4.进入ubuntu安装界面，可选择语言为中文<br>
 5.先不连WIFI<br>
-6.一定要注意别安装在了Windows所在的磁盘上！有一个选项是选择安装磁盘，那么C盘和D盘都是同一块磁盘，不要选择这个<br>
+6.注意别安装在了Windows所在的磁盘上<br>
 7.找到自己的分区，分区设置（仅供参考）：<br>
 引导分区	500MB	主分区	空间起始位置	EFI系统分区<br>
 内存交换分区	10GB	主分区	空间起始位置	交换空间<br>
