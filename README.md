@@ -100,7 +100,7 @@ sudo apt install ros-noetic-moveit
 sudo apt update
 sudo apt install ros-noetic-ompl
 ```
-源代码安装moveit和ompl的步骤也提供在下方
+源代码安装moveit和ompl的步骤也提供在下方<br>
 源代码ompl：
 ```
 1.检查自己系统有没有OMPL库
