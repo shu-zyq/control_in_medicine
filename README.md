@@ -109,27 +109,20 @@ find ./ -name "ompl*"
 find ./ -name "libompl"
 # 若有则卸载，若无则跳到下一步
 卸载：sudo apt-get purge ros-noetic-ompl
-2.创建工作空间
-mkdir catkin_ws
-cd catkin_ws
-mkdir src
-cd src
-catkin_init_workspace
-cd ..
-catkin init
-catkin_make
+2.创建存放库的空间(推荐在～主目录中创建一个ompl文件夹存放)
+mkdir ompl
+cd ompl
 3.安装源代码
-cd ~/catkin_ws/src
 git clone https://github.com/ompl/ompl
 4.编译
-cd ompl
+cd ~/ompl
 mkdir build
 cd build
 cmake ..
 make
 sudo make install
-# 重编译
-cd ompl/build
+# 如果后续自己修改过源代码则需要重编译
+cd ~/ompl/build
 cmake ..
 make
 sudo make install
@@ -146,12 +139,11 @@ sudo apt-get dist-upgrade
 sudo apt-get install python3-wstool 
 sudo apt-get install python3-catkin-tools 
 sudo apt-get installclang-format-3.9  //这一步可能没有多大用，失败了也没关系
-4.下载源码并编译
+4.下载源码并编译(在这里需要在终端中进入工作空间，若没有工作空间则先创建一个)
 source /opt/ros/noetic/setup.bash  //添加环境变量
 wstool init src
 wstool merge -t src https://raw.githubusercontent.com/ros-planning/moveit/master/moveit.rosinstall
-wstool update -t src
-# 若遇报错直接上github拷贝代码
+wstool update -t src   // 若遇报错直接上github拷贝代码
 rosdep install -y --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}   # 自动安装 ROS 包的依赖项
 catkin config --extend /opt/ros/${ROS_DISTRO} --cmake-args -DCMAKE_BUILD_TYPE=Release
 catkin_make
