@@ -47,7 +47,7 @@ rosrun rrt_zyq demo7.py
 ## 系统、库的安装
 （如果都已经安装好了则不需要看这一部分）<br>
 以下均为我在曾经安装时所作笔记，如遇其他报错欢迎交流
-### ubuntu20.04安装
+### UBUNTU20.04安装
 1.用一个大于8G的U盘作为启动盘，下载约4.1G的系统映像，写入U盘<br>
 2.设置好磁盘分区<br>
 3.重启电脑，F2进入BIOS，在boot maneger里关闭secure boot，并将第一启动选择从Windows改为USB<br>
