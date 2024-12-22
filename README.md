@@ -136,6 +136,7 @@ sudo apt-get -y install cudnn-cuda-12
 cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
 11.监控GPU状态
 watch -n 1 nvidia-smi
+(以下为我的版本配置，是截至2024.11最新版本)
 NVDIA版本：560.35.03
 CUDA版本：12.6
 cuDNN版本：9.5.1
