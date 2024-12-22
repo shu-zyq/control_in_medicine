@@ -91,8 +91,71 @@ sudo rm /var/lib/dpkg/lock
 我的解决办法：重启，有效
 ```
 ### OMPL和MoveIt的安装
-如果是二进制安装，方法十分简单，网上可查
-
+如果需求不高，推荐二进制安葬，方便很多
+```
+# 二进制安装moveit
+sudo apt update
+sudo apt install ros-noetic-moveit
+# 二进制安装ompl
+sudo apt update
+sudo apt install ros-noetic-ompl
+```
+源代码安装moveit和ompl的步骤也提供在下方
+源代码ompl：
+```
+1.检查自己系统有没有OMPL库
+cd /opt/ros/noetic
+find ./ -name "ompl*"
+find ./ -name "libompl"
+# 若有则卸载，若无则跳到下一步
+卸载：sudo apt-get purge ros-noetic-ompl
+2.创建工作空间
+mkdir catkin_ws
+cd catkin_ws
+mkdir src
+cd src
+catkin_init_workspace
+cd ..
+catkin init
+catkin_make
+3.安装源代码
+cd ~/catkin_ws/src
+git clone https://github.com/ompl/ompl
+4.编译
+cd ompl
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+# 重编译
+cd ompl/build
+cmake ..
+make
+sudo make install
+```
+源代码moveit：
+```
+1.卸载二进制的MoveIt
+sudo apt-get remove ros-noetic-moveit-*
+2.更新软件包
+rosdep update
+sudo apt-get update
+sudo apt-get dist-upgrade
+3.安装依赖
+sudo apt-get install python3-wstool 
+sudo apt-get install python3-catkin-tools 
+sudo apt-get installclang-format-3.9  //这一步可能没有多大用，失败了也没关系
+4.下载源码并编译
+source /opt/ros/noetic/setup.bash  //添加环境变量
+wstool init src
+wstool merge -t src https://raw.githubusercontent.com/ros-planning/moveit/master/moveit.rosinstall
+wstool update -t src
+# 若遇报错直接上github拷贝代码
+rosdep install -y --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}   # 自动安装 ROS 包的依赖项
+catkin config --extend /opt/ros/${ROS_DISTRO} --cmake-args -DCMAKE_BUILD_TYPE=Release
+catkin_make
+```
 ### NVIDIA、CUDA、CUDNN的安装
 ```
 1.添加源
