@@ -13,7 +13,7 @@
 **code:**<br>
 这里面是路径规划的程序<br>
 
-obstacle:<br>
+**obstacle:**<br>
 这里面包含了障碍物的模型
 ## 运行环境
 Ubuntu18.04 + ROS melodic 或者 Ubuntu20.04 + ROS noetic<br>
