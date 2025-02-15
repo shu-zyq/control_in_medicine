@@ -56,7 +56,7 @@ rosrun obstacle stl_marker_publisher_1.py
 rosrun rrt_zyq demo7.py
 ```
 
-## 系统、库的安装
+## 附：系统、库的安装
 （如果都已经安装好了则不需要看这一部分）<br>
 以下均为我在曾经安装时所作笔记，如遇其他报错欢迎交流
 ### UBUNTU20.04安装
